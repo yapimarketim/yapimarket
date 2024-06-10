@@ -1,0 +1,76 @@
+{
+    "products": [
+      {
+        "brand": "Vitra",
+        "product_code": "VT12345",
+        "name": "Vitra Musluk Bataryası",
+        "images": [
+          "1.jpg"
+        ],
+        "specifications": {
+          "material": "Pirinç",
+          "color": "Krom",
+          "type": "Lavabo Bataryası",
+          "installation_type": "Tezgah Üstü",
+          "height": "150mm",
+          "spout_reach": "120mm",
+          "flow_rate": "6 L/min",
+          "warranty": "5 Yıl"
+        }
+      },
+      {
+        "brand": "Vitra",
+        "product_code": "VT54321",
+        "name": "Vitra Yüksek Basınçlı Batarya",
+        "images": [
+          "2.jpg"
+        ],
+        "specifications": {
+          "material": "Paslanmaz Çelik",
+          "color": "Mat Siyah",
+          "type": "Mutfak Bataryası",
+          "installation_type": "Duvara Monte",
+          "height": "200mm",
+          "spout_reach": "150mm",
+          "flow_rate": "8 L/min",
+          "warranty": "3 Yıl"
+        }
+      },
+      {
+        "brand": "Vitra",
+        "product_code": "VT67890",
+        "name": "Vitra Sensörlü Batarya",
+        "images": [
+          "3.jpg"
+        ],
+        "specifications": {
+          "material": "Paslanmaz Çelik",
+          "color": "Krom",
+          "type": "Lavabo Bataryası",
+          "installation_type": "Tezgah Üstü",
+          "height": "180mm",
+          "spout_reach": "130mm",
+          "flow_rate": "7 L/min",
+          "warranty": "2 Yıl"
+        }
+      },
+      {
+        "brand": "Vitra",
+        "product_code": "VT24680",
+        "name": "Vitra Duvara Monte Batarya",
+        "images": [
+          "4.jpg"
+        ],
+        "specifications": {
+          "material": "Krom Kaplama Pirinç",
+          "color": "Gümüş",
+          "type": "Lavabo Bataryası",
+          "installation_type": "Duvara Monte",
+          "height": "160mm",
+          "spout_reach": "110mm",
+          "flow_rate": "5 L/min",
+          "warranty": "4 Yıl"
+        }
+      }
+    ]
+  }
