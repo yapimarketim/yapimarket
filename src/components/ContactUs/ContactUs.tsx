@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
-type Props = {};
+const ContactUs: React.FC = () => {
+  const form = useRef<HTMLFormElement | null>(null);
 
-const ContactUs = (props: Props) => {
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (form.current) {
+      emailjs
+        .sendForm("service_nqvgjke", "template_gxcgijb", form.current, "YXrS2q7U7uVKkFR2D")
+        .then(
+          (result) => {
+            console.log("E-posta gönderildi:", result.text);
+          },
+          (error) => {
+            console.error("E-posta gönderme hatası:", error.text);
+          }
+        );
+    }
+  };
+
   return (
     <section className="contact-section area-padding">
       <div className="container">
@@ -23,11 +41,9 @@ const ContactUs = (props: Props) => {
           </div>
           <div className="col-lg-8">
             <form
+              ref={form}
               className="form-contact contact_form"
-              action="contact_process.php"
-              method="post"
-              id="contactForm"
-              noValidate={true}
+              onSubmit={sendEmail}
             >
               <div className="row">
                 <div className="col-12">
@@ -99,7 +115,7 @@ const ContactUs = (props: Props) => {
               </span>
               <div className="media-body">
                 <h3>
-                  <a href="tel:+905350239685">+ (90) 535 - 0239685  </a>
+                  <a href="tel:+905350239685">+ (90) 535 - 0239685 </a>
                 </h3>
                 <p>Pazartesi'den Cuma'ya 09.00'dan 18.00'e kadar</p>
               </div>
@@ -110,13 +126,8 @@ const ContactUs = (props: Props) => {
               </span>
               <div className="media-body">
                 <h3>
-                  <a href="/cdn-cgi/l/email-protection#c9babcb9b9a6bbbd89aaa6a5a6bba5a0abe7aaa6a4">
-                    <span
-                      className="__cf_email__"
-                      data-cfemail="89fafcf9f9e6fbfdc9eae6e5e6fbe5e0eba7eae6e4"
-                    >
-                      [email&#160;protected]
-                    </span>
+                  <a href="mailto:email@example.com">
+                    email@example.com
                   </a>
                 </h3>
                 <p>Sorunuzu istediğiniz zaman bize gönderin!</p>

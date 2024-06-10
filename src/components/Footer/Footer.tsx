@@ -1,9 +1,33 @@
 import Link from "next/link";
 import React from "react";
+import emailjs from "@emailjs/browser";
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  const form = React.useRef<HTMLFormElement | null>(null);
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (form.current) {
+      emailjs
+        .sendForm(
+          "service_nqvgjke",
+          "template_smioada",
+          form.current,
+          "YXrS2q7U7uVKkFR2D"
+        )
+        .then(
+          (result) => {
+            console.log("E-posta gönderildi:", result.text);
+          },
+          (error) => {
+            console.error("E-posta gönderme hatası:", error.text);
+          }
+        );
+    }
+  };
   return (
     <footer className="footer-area ">
       <div className="container">
@@ -68,23 +92,18 @@ const Footer = (props: Props) => {
             <div className="single-footer-widget newsletter">
               <h6>Size Ulaşalım</h6>
               <div id="mc_embed_signup">
-                <form
-                  target="_blank"
-                  action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                  method="get"
-                  className="form-inline"
-                >
+                <form ref={form} onSubmit={sendEmail} className="form-inline">
                   <div className="form-group row no-gutters">
                     <div className="col-lg-8 col-md-8 col-7">
                       <input
-                        name="EMAIL"
+                        name="email"
                         placeholder="Email Adresinizi Giriniz."
-                        required={true}
+                        required
                         type="email"
                       />
                     </div>
                     <div className="col-lg-4 col-md-4 col-5">
-                      <button className="nw-btn main_btn circle">
+                      <button type="submit" className="nw-btn main_btn circle">
                         Gönder
                         <span className="lnr lnr-arrow-right"></span>
                       </button>

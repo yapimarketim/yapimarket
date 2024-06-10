@@ -10,6 +10,7 @@
     "export": "npm run build && next export"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@next/font": "^13.3.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
