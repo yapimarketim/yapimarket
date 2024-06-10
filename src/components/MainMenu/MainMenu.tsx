@@ -47,7 +47,7 @@ const MainMenu = (props: Props) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/projects">
+                <Link className="nav-link" href="/products">
                   Ürünlerimiz
                 </Link>
               </li>
@@ -61,10 +61,10 @@ const MainMenu = (props: Props) => {
           <div className="right-button">
             <ul>
               <li className="shop-icon">
-                <a href="#">
+                <Link href="/shopping-page">
                   <i className="ti-shopping-cart-full"></i>
                   <span>0</span>
-                </a>
+                </Link>
               </li>
               <li>
                 <a id="search" href="#">

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type Props = {};
@@ -15,15 +16,15 @@ const Footer = (props: Props) => {
                   <ul className="footer-nav">
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="#">Anasayfa</a>
+                      <Link href="/">Anasayfa</Link>
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="#">Hakkımızda</a>
+                      <Link href="/about-us">Hakkımızda</Link>
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="#">Ürünlerimiz</a>
+                      <Link href="/products">Ürünlerimiz</Link>
                     </li>
                   </ul>
                 </div>
@@ -31,19 +32,15 @@ const Footer = (props: Props) => {
                   <ul className="footer-nav">
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="#">Hizmetlerimiz</a>
+                      <Link href="/services">Hizmetlerimiz</Link>
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="#">şartlar ve koşullar</a>
+                      <a href="/terms-and-conditions">şartlar ve koşullar</a>
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="#">Mağaza</a>
-                    </li>
-                    <li>
-                      <i className="ti-angle-right"></i>
-                      <a href="#">Bize Ulaşın</a>
+                      <Link href="/contact">Bize Ulaşın</Link>
                     </li>
                   </ul>
                 </div>
@@ -100,9 +97,9 @@ const Footer = (props: Props) => {
                 Mail adresinizi bizimle paylaşmanız durumunda 1 iş günü
                 içerisinde size ulaşalım.
               </p>
-              <a className="footer-link" href="#">
+              <Link className="footer-link" href="/privacy-policy">
                 Gizlilik Politikası
-              </a>
+              </Link>
             </div>
           </div>
         </div>

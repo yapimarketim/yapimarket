@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import Products from "@/helpers/data/product.json";
+import Link from "next/link";
 
 const Product = ({ showHeading = true }) => {
   const { products } = Products;
@@ -16,6 +17,24 @@ const Product = ({ showHeading = true }) => {
     }
     setActiveFilter(category);
   };
+
+  function generateSlug(name: string): string {
+    name = name.toLowerCase();
+    const turkishMap: { [key: string]: string } = {
+        'ç': 'c',
+        'ğ': 'g',
+        'ı': 'i',
+        'ö': 'o',
+        'ş': 's',
+        'ü': 'u'
+    };
+    
+    name = name.replace(/[çğıöşü]/g, char => turkishMap[char]);
+    name = name.replace(/[^a-z0-9\s-]/g, '');
+    name = name.replace(/[\s-]+/g, '-');
+    
+    return name;
+}
 
   return (
     <section className="portfolio_area area-padding" id="portfolio">
@@ -40,8 +59,9 @@ const Product = ({ showHeading = true }) => {
         <div className="filters-content">
           <div className="row portfolio-grid">
             {filterProducts.map((item) => (
-              <div className="col-lg-6 col-md-6" key={item.product_code}>
+              <div className="col-lg-4 col-md-6" key={item.product_code}>
                 <div className="single_portfolio">
+                  <Link href={`${generateSlug(item.name)}?product_code=${item.product_code}`}>
                   <Image
                     width={255}
                     height={120}
@@ -49,6 +69,7 @@ const Product = ({ showHeading = true }) => {
                     src={`/images/${item.images[0]}`}
                     alt={item.name}
                   />
+                  </Link>
                   <div className="short_info">
                     <p>{item.specifications.type}</p>
                     <h4>
