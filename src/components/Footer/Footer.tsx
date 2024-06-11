@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 type Props = {};
 
@@ -20,19 +21,31 @@ const Footer = (props: Props) => {
         )
         .then(
           (result) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'E-posta Gönderildi',
+              text: 'E-postanız başarıyla gönderildi!',
+            });
             console.log("E-posta gönderildi:", result.text);
+            form.current!.reset();
           },
           (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'E-posta Gönderme Hatası',
+              text: 'E-posta gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.',
+            });
             console.error("E-posta gönderme hatası:", error.text);
           }
         );
     }
   };
+
   return (
-    <footer className="footer-area ">
+    <footer className="footer-area">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4  col-md-6">
+          <div className="col-lg-4 col-md-6">
             <div className="single-footer-widget">
               <h6>Faydalı Linkler</h6>
               <div className="row">
@@ -60,7 +73,7 @@ const Footer = (props: Props) => {
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="/terms-and-conditions">şartlar ve koşullar</a>
+                      <a href="/terms-and-conditions">Şartlar ve Koşullar</a>
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>
@@ -71,24 +84,24 @@ const Footer = (props: Props) => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4  col-md-6">
+          <div className="col-lg-4 col-md-6">
             <div className="single-footer-widget mail-chimp">
               <h6 className="mb-20">Çalışma Saatleri</h6>
               <ul className="business-hour">
                 <li>
-                  Pazartesi - Cuma : <span>9:00 - 18:00</span>{" "}
+                  Pazartesi - Cuma : <span>9:00 - 18:00</span>
                 </li>
                 <li>
-                  Cumartesi :<span>9:00 - 16:00</span>
+                  Cumartesi : <span>9:00 - 16:00</span>
                 </li>
                 <li>
-                  Pazar :<span>Kapalı</span>
+                  Pazar : <span>Kapalı</span>
                 </li>
               </ul>
               <p>Resmi tatillerde hizmet vermekteyiz!</p>
             </div>
           </div>
-          <div className="col-lg-4  col-md-12">
+          <div className="col-lg-4 col-md-12">
             <div className="single-footer-widget newsletter">
               <h6>Size Ulaşalım</h6>
               <div id="mc_embed_signup">
@@ -125,8 +138,8 @@ const Footer = (props: Props) => {
       </div>
       <div className="footer-bottom">
         <div className="container">
-          <div className="row ">
-            <p className="col-lg-12 footer-text ">
+          <div className="row">
+            <p className="col-lg-12 footer-text">
               Copyright &copy; 2024 All rights reserved | This template is made
               with <i className="fa fa-heart" aria-hidden="true"></i> by{" "}
               <a href="https://colorlib.com" target="_blank">

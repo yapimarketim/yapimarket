@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 const ContactUs: React.FC = () => {
   const form = useRef<HTMLFormElement | null>(null);
@@ -8,17 +9,59 @@ const ContactUs: React.FC = () => {
     e.preventDefault();
 
     if (form.current) {
-      emailjs
-        .sendForm("service_nqvgjke", "template_gxcgijb", form.current, "YXrS2q7U7uVKkFR2D")
-        .then(
-          (result) => {
-            console.log("E-posta gönderildi:", result.text);
-          },
-          (error) => {
-            console.error("E-posta gönderme hatası:", error.text);
-          }
-        );
+      if (validateForm()) {
+        emailjs
+          .sendForm("service_nqvgjke", "template_gxcgijb", form.current, "YXrS2q7U7uVKkFR2D")
+          .then(
+            (result) => {
+              Swal.fire({
+                icon: 'success',
+                title: 'E-posta Gönderildi',
+                text: 'E-postanız başarıyla gönderildi!',
+              });
+              console.log("E-posta gönderildi:", result.text);
+              form.current!.reset();
+            },
+            (error) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'E-posta Gönderme Hatası',
+                text: 'E-posta gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.',
+              });
+              console.error("E-posta gönderme hatası:", error.text);
+            }
+          );
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Geçersiz Giriş',
+          text: 'Lütfen tüm alanları doğru doldurduğunuzdan emin olun.',
+        });
+      }
     }
+  };
+
+  const validateForm = (): boolean => {
+    if (form.current) {
+      const name = (form.current.elements.namedItem("name") as HTMLInputElement).value.trim();
+      const email = (form.current.elements.namedItem("email") as HTMLInputElement).value.trim();
+      const subject = (form.current.elements.namedItem("subject") as HTMLInputElement).value.trim();
+      const message = (form.current.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!name || !email || !subject || !message) {
+        return false;
+      }
+
+      if (!emailRegex.test(email)) {
+        return false;
+      }
+
+      return true;
+    }
+
+    return false;
   };
 
   return (
@@ -126,9 +169,7 @@ const ContactUs: React.FC = () => {
               </span>
               <div className="media-body">
                 <h3>
-                  <a href="mailto:email@example.com">
-                    email@example.com
-                  </a>
+                  <a href="mailto:email@example.com">email@example.com</a>
                 </h3>
                 <p>Sorunuzu istediğiniz zaman bize gönderin!</p>
               </div>
