@@ -1,10 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Props = {};
 
 const MainMenu = (props: Props) => {
+
+  const router = usePathname();
+
   return (
     <div className="main_menu">
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -31,27 +35,27 @@ const MainMenu = (props: Props) => {
             id="navbarSupportedContent"
           >
             <ul className="nav navbar-nav menu_nav ml-auto">
-              <li className="nav-item active">
+              <li className={router==="/" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/">
                   Anasayfa
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className={router==="/about-us" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/about-us">
                   Hakkımızda
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className={router==="/services" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/services">
                   Hizmetlerimiz
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className={router==="/products" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/products">
                   Ürünlerimiz
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className={router==="/contact" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/contact">
                   Bize Ulaşın
                 </Link>
