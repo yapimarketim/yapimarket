@@ -73,7 +73,7 @@ const Footer = (props: Props) => {
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>
-                      <a href="/terms-and-conditions">Şartlar ve Koşullar</a>
+                      <Link href="/terms-and-conditions">Şartlar ve Koşullar</Link>
                     </li>
                     <li>
                       <i className="ti-angle-right"></i>

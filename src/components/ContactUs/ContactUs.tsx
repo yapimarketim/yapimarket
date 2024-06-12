@@ -160,7 +160,7 @@ const ContactUs: React.FC = () => {
                 <h3>
                   <a href="tel:+905350239685">+ (90) 535 - 0239685 </a>
                 </h3>
-                <p>Pazartesi'den Cuma'ya 09.00'dan 18.00'e kadar</p>
+                <p>Pazartesi&apos;den Cuma&apos;ya 09.00&apos;dan 18.00&apos;e kadar</p>
               </div>
             </div>
             <div className="media contact-info">
