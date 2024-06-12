@@ -49,11 +49,11 @@ const Product = ({ showHeading = true }) => {
         <div className="filters portfolio-filter">
           <ul>
             <li className={activeFilter === "Tüm Ürünler" ? "active" : ""} onClick={() => handleFilter("Tüm Ürünler")}>
-              Tüm Ürünler
+              TÜM ÜRÜNLER
             </li>
-            <li className={activeFilter === "Mutfak Bataryası" ? "active" : ""} onClick={() => handleFilter("Mutfak Bataryası")}>Mutfak Ekipmanları</li>
-            <li className={activeFilter === "Lavabo Bataryası" ? "active" : ""} onClick={() => handleFilter("Lavabo Bataryası")}>Banyo Ekipmanları</li>
-            <li className={activeFilter === "Diğer Ürünler" ? "active" : ""} onClick={() => handleFilter("Diğer Ürünler")}>Diğer Ürünler</li>
+            <li className={activeFilter === "Mutfak Bataryası" ? "active" : ""} onClick={() => handleFilter("Mutfak Bataryası")}>MUTFAK EKİPMANLARI</li>
+            <li className={activeFilter === "Lavabo Bataryası" ? "active" : ""} onClick={() => handleFilter("Lavabo Bataryası")}>BANYO EKİPMANLARI</li>
+            <li className={activeFilter === "Diğer Ürünler" ? "active" : ""} onClick={() => handleFilter("Diğer Ürünler")}>DİĞER ÜRÜNLER</li>
           </ul>
         </div>
         <div className="filters-content">

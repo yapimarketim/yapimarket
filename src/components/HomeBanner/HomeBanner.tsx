@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Parallax } from "react-parallax";
 
@@ -23,9 +24,9 @@ const HomeBanner = (props: Props) => {
                 <br />
                 Yapı Market ile ulaşın
               </h3>
-              <a className="main_btn" href="#">
+              <Link className="main_btn" href="/get-a-quote">
                 Fiyat Teklifi Alın
-              </a>
+              </Link>
             </div>
           </div>
         </Parallax>

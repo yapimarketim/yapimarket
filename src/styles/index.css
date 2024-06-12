@@ -2500,6 +2500,7 @@ h6 {
 .single_portfolio {
   position: relative;
   margin-bottom: 30px;
+  border: 1px solid white;
 }
 @media (max-width: 767px) {
   .single_portfolio {
@@ -2535,6 +2536,10 @@ h6 {
 .single_portfolio:hover .short_info {
   opacity: 1;
   visibility: visible;
+}
+
+.single_portfolio:hover{
+  border: 1px solid #38B6FF;
 }
 
 /* End Portfolio Area css

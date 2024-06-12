@@ -37,27 +37,27 @@ const MainMenu = (props: Props) => {
             <ul className="nav navbar-nav menu_nav ml-auto">
               <li className={router==="/" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/">
-                  Anasayfa
+                  ANASAYFA
                 </Link>
               </li>
               <li className={router==="/about-us" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/about-us">
-                  Hakkımızda
+                  HAKKIMIZDA
                 </Link>
               </li>
               <li className={router==="/services" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/services">
-                  Hizmetlerimiz
+                  HİZMETLERİMİZ
                 </Link>
               </li>
               <li className={router==="/products" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/products">
-                  Ürünlerimiz
+                  ÜRÜNLERİMİZ
                 </Link>
               </li>
               <li className={router==="/contact" ? "nav-item active" : "nav-item"}>
                 <Link className="nav-link" href="/contact">
-                  Bize Ulaşın
+                  BİZE ULAŞIN
                 </Link>
               </li>
             </ul>
@@ -71,9 +71,9 @@ const MainMenu = (props: Props) => {
                 </Link>
               </li>
               <li>
-                <a id="search" href="#">
+                <Link id="search" href="/products">
                   <i className="ti-search"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
