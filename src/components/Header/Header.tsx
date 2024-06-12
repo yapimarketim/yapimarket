@@ -27,7 +27,6 @@ const Header = (props: Props) => {
     <header className="header_area" ref={stickyRef}>
       <TopNav />
       <MainMenu />
-
       <SearchBar />
     </header>
   );

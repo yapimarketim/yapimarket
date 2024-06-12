@@ -91,7 +91,7 @@ ul {
   text-align: center;
   line-height: 69px;
   font-size: 30px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 700;
 }
 .header_area .navbar .navbar-brand {
@@ -102,7 +102,7 @@ ul {
 }
 .header_area .navbar .nav .nav-item .nav-link {
   font: 500 12px/80px "Roboto", sans-serif;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #202e31;
   padding: 0px;
   display: inline-block;
@@ -418,7 +418,7 @@ ul {
   font-size: 24px;
   color: #fff;
   font-family: "Heebo", sans-serif;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 24px;
   display: inline-block;
   position: relative;
@@ -1003,7 +1003,7 @@ ul {
   font-family: "Heebo", sans-serif;
   margin-bottom: 22px;
   line-height: 40px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 .number-content p {
   font-size: 15px;
@@ -1617,7 +1617,7 @@ h6 {
 .progress-table .table-head .percentage {
   color: #222222;
   line-height: 40px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 500;
 }
 
@@ -2336,7 +2336,7 @@ h6 {
   cursor: pointer;
   border-radius: 5px;
   font-family: "Heebo", sans-serif;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   transition: all 300ms linear 0s;
 }
 .main_btn:hover {
@@ -2356,7 +2356,7 @@ h6 {
   border-radius: 4px;
   color: #fff;
   border: 1px solid #38B6FF;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   background: #38B6FF;
   cursor: pointer;
   transition: all 300ms linear 0s;
@@ -2480,7 +2480,7 @@ h6 {
   margin-right: 40px;
   font-size: 14px;
   font-weight: 500;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #202e31;
   cursor: pointer;
   transition: all 300ms linear 0s;
@@ -2529,7 +2529,7 @@ h6 {
 }
 .single_portfolio .short_info p {
   margin-bottom: 0px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #38B6FF;
 }
 .single_portfolio:hover .short_info {

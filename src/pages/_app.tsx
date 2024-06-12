@@ -7,7 +7,7 @@ import '@/styles/responsive.css'
 const roboto = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
