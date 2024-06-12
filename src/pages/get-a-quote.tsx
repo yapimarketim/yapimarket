@@ -2,13 +2,29 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import PageHeader from "@/components/PageHeader/PageHeader";
 import Head from "next/head";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 import productList from "@/helpers/data/product.json";
 
 const GetAQuotePage = () => {
   const form = useRef<HTMLFormElement | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleCheckboxChange = (product_code: string) => {
+    setSelectedProducts(prevSelected => {
+      if (prevSelected.includes(product_code)) {
+        return prevSelected.filter(code => code !== product_code);
+      } else {
+        return [...prevSelected, product_code];
+      }
+    });
+  };
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +47,7 @@ const GetAQuotePage = () => {
               });
               console.log("E-posta gönderildi:", result.text);
               form.current!.reset();
+              setSelectedProducts([]);
             },
             (error) => {
               Swal.fire({
@@ -97,7 +114,7 @@ const GetAQuotePage = () => {
 
       <PageHeader title="Fiyat Teklifi Alın" navTitle="Fiyat Teklifi Alın" />
       <div className="container my-5">
-        <div className="row d-flex alig-items-center justify-content-center">
+        <div className="row d-flex align-items-center justify-content-center">
           <div className="col-8">
             <form
               ref={form}
@@ -151,32 +168,36 @@ const GetAQuotePage = () => {
                   </div>
                 </div>
                 <div className="col-6">
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                  >
-                    <option selected>
-                      Fiyat Teklifi Alacağınız Ürünleri Seçiniz
-                    </option>
-                    {productList.products.map((item) => (
-                      <option key={item.product_code} value={item.product_code}>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="flexCheckDefault"
-                          >
-                            {item.product_code}
-                          </label>
-                        </div>
-                      </option>
-                    ))}
-                  </select>
+                  <div className="form-group">
+                    <div className="dropdown form-control">
+                      <button
+                        className="btn w-100 h-100 bg-transparent dropdown-toggle shadow-none d-flex align-items-center justify-content-between m-0 p-0"
+                        type="button"
+                        id="dropdownMenuButton"
+                        onClick={toggleDropdown}
+                      >
+                        Fiyat Teklifi Alacağınız Ürünleri Seçiniz
+                      </button>
+                      <div
+                        className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}
+                        aria-labelledby="dropdownMenuButton"
+                      >
+                        {productList.products.map((item) => (
+                          <div key={item.product_code} className="dropdown-item">
+                            <input
+                              type="checkbox"
+                              name={item.product_code}
+                              id={item.product_code}
+                              value={item.product_code}
+                              checked={selectedProducts.includes(item.product_code)}
+                              onChange={() => handleCheckboxChange(item.product_code)}
+                            />
+                            <label htmlFor={item.product_code} className="ml-2">{item.product_code}</label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="form-group text-center mt-3">
