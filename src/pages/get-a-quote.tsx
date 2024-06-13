@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 import productList from "@/helpers/data/product.json";
+import Image from "next/image";
 
 const GetAQuotePage = () => {
   const form = useRef<HTMLFormElement | null>(null);
@@ -114,6 +115,22 @@ const GetAQuotePage = () => {
       <Header />
 
       <PageHeader title="Fiyat Teklifi Alın" navTitle="Fiyat Teklifi Alın" />
+      <div className="container d-flex align-items-center justify-content-center mt-5">
+        <a
+          href="https://wa.me/5350239685"
+          target="_blank"
+          className="text-dark fw-bolder"
+        >
+          <Image
+            src="/images/brand/whatsapp.png"
+            width={35}
+            height={35}
+            alt="whatsapp icon"
+          />
+          <span className="mx-3">+90 535 023 96 85</span>
+          <span>Siparişlerinizi whatsapp üzerinden de iletebilirsiniz.</span>
+        </a>
+      </div>
       <div className="container my-5">
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-8">

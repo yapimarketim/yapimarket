@@ -1,16 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {};
 
 const About = (props: Props) => {
   return (
-    <section className="about-area area-padding">
+    <section className="about-area area-padding" style={{backgroundColor:"#f6f6f6"}}>
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-6 d-none d-lg-block">
             <div className="about-img">
-              <Image width={555} height={485} src="/images/about1.jpg" alt="" />
+              <Image width={555} height={485} src="/images/about1.jpg" alt="image" />
             </div>
           </div>
           <div className="col-lg-6">
@@ -26,9 +27,9 @@ const About = (props: Props) => {
                 Biz, müşterilerimize en iyi hizmeti sunmak için buradayız.
                 <br /> Hayalinizdeki evler bir telefon uzağınızda...
               </p>
-              <a className="main_btn" href="#">
+              <Link className="main_btn" href="/products">
                 Daha fazlası için
-              </a>
+              </Link>
             </div>
           </div>
         </div>

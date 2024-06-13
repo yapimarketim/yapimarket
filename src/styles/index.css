@@ -440,6 +440,8 @@ ul {
 }
 .home_banner_area .banner_inner .banner_content .main_btn {
   margin-top: 35px;
+  font-size: 1.5rem;
+  padding: 0.5rem 3rem;
 }
 
 /* End Home Banner Area css
