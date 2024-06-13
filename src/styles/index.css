@@ -2874,3 +2874,24 @@ h6 {
   }
 }
 /*---------------------------------------------------- */
+
+/* GET A QUOTE DROPDOWN */
+.dropdown button{
+  font-size: 13px;
+  color: #888888;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dropdown .dropdown-menu .dropdown-item{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.dropdown .dropdown-menu .dropdown-item span{
+  margin-left: 0.5rem;
+  color: #111314;
+}

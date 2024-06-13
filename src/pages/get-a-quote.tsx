@@ -17,9 +17,9 @@ const GetAQuotePage = () => {
   };
 
   const handleCheckboxChange = (product_code: string) => {
-    setSelectedProducts(prevSelected => {
+    setSelectedProducts((prevSelected) => {
       if (prevSelected.includes(product_code)) {
-        return prevSelected.filter(code => code !== product_code);
+        return prevSelected.filter((code) => code !== product_code);
       } else {
         return [...prevSelected, product_code];
       }
@@ -76,16 +76,10 @@ const GetAQuotePage = () => {
       const email = (
         form.current.elements.namedItem("email") as HTMLInputElement
       ).value.trim();
-      const subject = (
-        form.current.elements.namedItem("subject") as HTMLInputElement
-      ).value.trim();
-      const message = (
-        form.current.elements.namedItem("message") as HTMLTextAreaElement
-      ).value.trim();
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (!name || !email || !subject || !message) {
+      if (!name || !email) {
         return false;
       }
 
@@ -97,6 +91,13 @@ const GetAQuotePage = () => {
     }
 
     return false;
+  };
+
+  const getProductNameByCode = (product_code: string): string => {
+    const product = productList.products.find(
+      (item) => item.product_code === product_code
+    );
+    return product ? product.name : "";
   };
 
   return (
@@ -122,18 +123,8 @@ const GetAQuotePage = () => {
               onSubmit={sendEmail}
             >
               <div className="row">
-                <div className="col-12">
-                  <div className="form-group">
-                    <textarea
-                      className="form-control w-100"
-                      name="message"
-                      id="message"
-                      cols={30}
-                      rows={9}
-                      placeholder="Mesajınızı Giriniz."
-                    ></textarea>
-                  </div>
-                </div>
+                <input type="hidden" name="message" value={selectedProducts} />
+
                 <div className="col-sm-6">
                   <div className="form-group">
                     <input
@@ -156,18 +147,18 @@ const GetAQuotePage = () => {
                     />
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-md-6">
                   <div className="form-group">
                     <input
                       className="form-control"
                       name="subject"
                       id="subject"
-                      type="text"
-                      placeholder="Konu Belirtiniz."
+                      type="number"
+                      placeholder="Telefon Numaranızı Giriniz (İsteğe Bağlı)."
                     />
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-md-6">
                   <div className="form-group">
                     <div className="dropdown form-control">
                       <button
@@ -176,23 +167,34 @@ const GetAQuotePage = () => {
                         id="dropdownMenuButton"
                         onClick={toggleDropdown}
                       >
-                        Fiyat Teklifi Alacağınız Ürünleri Seçiniz
+                        Ürünleri Seçiniz
                       </button>
                       <div
-                        className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}
+                        className={`dropdown-menu ${
+                          dropdownOpen ? "show" : ""
+                        }`}
                         aria-labelledby="dropdownMenuButton"
                       >
                         {productList.products.map((item) => (
-                          <div key={item.product_code} className="dropdown-item">
+                          <div
+                            key={item.product_code}
+                            className="dropdown-item"
+                          >
                             <input
                               type="checkbox"
                               name={item.product_code}
                               id={item.product_code}
                               value={item.product_code}
-                              checked={selectedProducts.includes(item.product_code)}
-                              onChange={() => handleCheckboxChange(item.product_code)}
+                              checked={selectedProducts.includes(
+                                item.product_code
+                              )}
+                              onChange={() =>
+                                handleCheckboxChange(item.product_code)
+                              }
                             />
-                            <label htmlFor={item.product_code} className="ml-2">{item.product_code}</label>
+                            <label htmlFor={item.product_code} className="m-0">
+                              {item.product_code} <span>{item.name}</span>
+                            </label>
                           </div>
                         ))}
                       </div>
@@ -201,11 +203,24 @@ const GetAQuotePage = () => {
                 </div>
               </div>
               <div className="form-group text-center mt-3">
-                <button type="submit" className="button button-contactForm w-50">
+                <button
+                  type="submit"
+                  className="button button-contactForm w-50"
+                >
                   Fiyat Al
                 </button>
               </div>
             </form>
+            <div className="mt-4">
+              <h5>Seçilen Ürünler:</h5>
+              <div className="row">
+                {selectedProducts.map((product_code, index) => (
+                  <div className="col-6" key={index}>
+                    <li>{getProductNameByCode(product_code)}</li>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
